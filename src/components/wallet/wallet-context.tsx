@@ -1,9 +1,16 @@
 'use client'
 
 import React, { createContext, useContext, useMemo } from 'react'
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
-import { WalletAdapterNetwork, WalletReadyState } from '@solana/wallet-adapter-base'
+import {
+  ConnectionProvider,
+  WalletProvider,
+} from '@solana/wallet-adapter-react'
+import {
+  WalletAdapterNetwork,
+  WalletReadyState,
+} from '@solana/wallet-adapter-base'
 import { SolflareWalletAdapter } from '@solana/wallet-adapter-solflare'
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom'
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
 import { CustomWalletModalProvider } from './custom-wallet-modal'
 import { clusterApiUrl } from '@solana/web3.js'
@@ -15,30 +22,32 @@ interface WalletContextProviderProps {
   children: React.ReactNode
 }
 
-export function WalletContextProvider({ children }: WalletContextProviderProps) {
-  const network = solanaConfig.network === 'mainnet-beta' 
-    ? WalletAdapterNetwork.Mainnet 
-    : WalletAdapterNetwork.Devnet
+export function WalletContextProvider({
+  children,
+}: WalletContextProviderProps) {
+  const network =
+    solanaConfig.network === 'mainnet-beta'
+      ? WalletAdapterNetwork.Mainnet
+      : WalletAdapterNetwork.Devnet
 
   const endpoint = useMemo(() => {
     return solanaConfig.rpcEndpoint || clusterApiUrl(network)
   }, [network])
 
-  const wallets = useMemo(() => [
-    new SolflareWalletAdapter({ network })
-  ], [network])
+  const wallets = useMemo(
+    () => [new PhantomWalletAdapter(), new SolflareWalletAdapter({ network })],
+    [network]
+  )
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider 
-        wallets={wallets} 
-        autoConnect 
+      <WalletProvider
+        wallets={wallets}
+        autoConnect
         onError={() => {}}
         localStorageKey="plutor-wallet"
       >
-        <WalletModalProvider>
-          {children}
-        </WalletModalProvider>
+        <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   )

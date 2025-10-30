@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils/cn'
@@ -17,6 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://plutor.xyz'
+  ),
   title: 'Plutor - Create Wealth From Invoices',
   description:
     'Transform invoices into instant liquidity using TIPS Protocol on Solana. The wealth creator for your business.',
@@ -55,24 +58,22 @@ export const metadata: Metadata = {
     images: ['/images/og-image.png'],
     creator: '@plutor',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#F8FAFC' },
-    { media: '(prefers-color-scheme: dark)', color: '#0F172A' },
-  ],
   icons: {
     icon: [
       { url: '/icons/plutor-svg-logo.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico' },
     ],
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
   },
-  manifest: '/site.webmanifest',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F8FAFC' },
+    { media: '(prefers-color-scheme: dark)', color: '#0F172A' },
+  ],
 }
 
 export default function RootLayout({
