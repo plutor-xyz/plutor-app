@@ -4,17 +4,19 @@ import { useWallet } from '@/hooks/use-wallet'
 import Button from '@/components/ui/button'
 import { Wallet } from 'lucide-react'
 
-export function SolflareConnectButton() {
-  const { wallet, connect, connected, connecting, disconnect, publicKey } = useWallet()
+export function PhantomConnectButton() {
+  const { wallet, connect, connected, connecting, disconnect, publicKey, select } = useWallet()
 
   const handleConnect = async () => {
     try {
+      // Select Phantom wallet
+      select('Phantom' as any)
       await connect()
     } catch (error) {
-      console.error('Failed to connect to Solflare:', error)
-      // If Solflare is not installed, redirect to download
+      console.error('Failed to connect to Phantom:', error)
+      // If Phantom is not installed, redirect to download
       if (error?.message?.includes('not found') || error?.message?.includes('not installed')) {
-        window.open('https://solflare.com/download', '_blank')
+        window.open('https://phantom.app/download', '_blank')
       }
     }
   }
@@ -61,8 +63,9 @@ export function SolflareConnectButton() {
     >
       <div className="flex items-center space-x-3">
         <Wallet className="w-5 h-5" />
-        <span>Connect Solflare Wallet</span>
+        <span>Connect Phantom Wallet</span>
       </div>
     </Button>
   )
 }
+

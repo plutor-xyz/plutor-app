@@ -6,7 +6,7 @@ import Button from '@/components/ui/button'
 
 export function WalletButton() {
   return (
-    <WalletMultiButton className="!bg-plutor-purple hover:!bg-purple-600 !text-white !border-none !rounded-lg !px-6 !py-3 !font-medium !transition-colors" />
+    <WalletMultiButton className="!bg-plutor-green hover:!bg-plutor-green/80 !text-black !border-none !rounded-lg !px-6 !py-3 !font-medium !transition-colors" />
   )
 }
 
