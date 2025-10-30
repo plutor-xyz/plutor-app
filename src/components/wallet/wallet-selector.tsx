@@ -3,7 +3,7 @@
 import React from 'react'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletName, WalletReadyState } from '@solana/wallet-adapter-base'
-import { Wallet } from 'lucide-react'
+import { WalletIcon } from '@solana/wallet-adapter-react-ui'
 import Button from '@/components/ui/button'
 
 export function WalletSelector() {
@@ -75,8 +75,8 @@ export function WalletSelector() {
           className="flex items-center justify-between p-4 bg-black/50 hover:bg-black/70 border border-plutor-green/30 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed group"
         >
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-plutor-green to-plutor-green-bright rounded-lg flex items-center justify-center">
-              <Wallet className="w-5 h-5 text-black" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+              <WalletIcon wallet={phantomWallet} className="w-10 h-10" />
             </div>
             <div className="text-left">
               <p className="text-white font-medium">Phantom</p>
@@ -106,8 +106,8 @@ export function WalletSelector() {
           className="flex items-center justify-between p-4 bg-black/50 hover:bg-black/70 border border-plutor-green/30 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed group"
         >
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-plutor-green to-plutor-green-bright rounded-lg flex items-center justify-center">
-              <Wallet className="w-5 h-5 text-black" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+              <WalletIcon wallet={solflareWallet} className="w-10 h-10" />
             </div>
             <div className="text-left">
               <p className="text-white font-medium">Solflare</p>
