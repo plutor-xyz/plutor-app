@@ -368,7 +368,7 @@ export async function searchUsersByCompany(searchTerm: string, limit: number = 1
     .from(users)
     .innerJoin(profiles, eq(users.id, profiles.userId))
     .leftJoin(didMetadata, eq(users.id, didMetadata.userId))
-    .where(sql`${profiles.companyName} ILIKE ${`%${searchTerm}%`}`)
+    .where(sql`${profiles.companyName} <% ${`%${searchTerm}%`}`)
     .limit(limit);
 
   return result;
