@@ -9,10 +9,17 @@
   --plutor-green: #A0E66E;
   --plutor-green-bright: #39FF14;
   --plutor-green-dark: #143200;
+  --plutor-green-hover: #B8ED85;
+  --plutor-green-muted: rgba(160, 230, 110, 0.7);
+  --plutor-green-border: rgba(160, 230, 110, 0.3);
   --plutor-black: #000000;
-  --plutor-black-light: #0A1A00;
+  --plutor-black-light: #0F0F0F;
+  --plutor-black-muted: rgba(15, 15, 15, 0.8);
   --plutor-white: #FFFFFF;
-  --plutor-gray: #7EE03E;
+  --plutor-gray-light: rgb(209, 213, 219);
+  --plutor-text-primary: #A0E66E;
+  --plutor-text-secondary: #143200;
+  --plutor-text-muted: rgb(209, 213, 219);
 }
 
 @layer base {

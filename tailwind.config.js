@@ -76,24 +76,40 @@ const config = {
           red: '#EF4444',
           gray: '#64748B',
         },
-        // Semantic color mappings
+        // Semantic color mappings aligned with HeroSection
         primary: {
           DEFAULT: '#A0E66E',
           foreground: '#143200',
+          hover: '#B8ED85',
+          muted: 'rgba(160, 230, 110, 0.7)',
+          border: 'rgba(160, 230, 110, 0.3)',
         },
         secondary: {
           DEFAULT: '#39FF14',
           foreground: '#000000',
+          muted: 'rgba(57, 255, 20, 0.7)',
         },
         background: {
           DEFAULT: '#000000',
-          light: '#0A1A00',
-          card: '#0F0F0F',
+          light: '#0F0F0F',
+          card: 'rgba(0, 0, 0, 0.5)',
+          muted: 'rgba(15, 15, 15, 0.8)',
         },
         foreground: {
-          DEFAULT: '#A0E66E',
-          muted: '#7EE03E',
-          white: '#FFFFFF',
+          DEFAULT: '#FFFFFF',
+          primary: '#A0E66E',
+          muted: 'rgb(209, 213, 219)', // gray-300
+          accent: '#143200',
+        },
+        border: {
+          DEFAULT: 'rgba(160, 230, 110, 0.3)',
+          muted: 'rgba(160, 230, 110, 0.1)',
+        },
+        text: {
+          DEFAULT: '#FFFFFF',
+          primary: '#A0E66E',
+          secondary: '#143200',
+          muted: 'rgb(209, 213, 219)', // gray-300
         },
       },
       fontFamily: {
