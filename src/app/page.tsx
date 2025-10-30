@@ -31,7 +31,11 @@ export default function Home() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <div className="w-10 h-10 flex items-center justify-center">
-                  <img src="/icons/plutor-svg-logo.svg" alt="Plutor" className="w-10 h-10" />
+                  <img
+                    src="/icons/plutor-svg-logo.svg"
+                    alt="Plutor"
+                    className="w-10 h-10"
+                  />
                 </div>
                 <span className="text-sm font-medium text-gray-400">Beta</span>
               </Link>
@@ -64,8 +68,8 @@ export default function Home() {
                 </div>
               ) : (
                 <Link href="/connect">
-                  <Button 
-                    variant="primary" 
+                  <Button
+                    variant="primary"
                     size="sm"
                     className="text-[#143200] bg-[#A0E66E] hover:bg-opacity-80"
                   >
@@ -114,7 +118,9 @@ export default function Home() {
             <Card className="text-center">
               <CardContent className="pt-8">
                 <div className="w-16 h-16 bg-plutor-green rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-plutor-green-dark">1</span>
+                  <span className="text-2xl font-bold text-plutor-green-dark">
+                    1
+                  </span>
                 </div>
                 <CardTitle size="md" className="mb-4 text-plutor-green">
                   Issue Invoice
@@ -144,7 +150,9 @@ export default function Home() {
             <Card className="text-center">
               <CardContent className="pt-8">
                 <div className="w-16 h-16 bg-plutor-green rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-plutor-green-dark">3</span>
+                  <span className="text-2xl font-bold text-plutor-green-dark">
+                    3
+                  </span>
                 </div>
                 <CardTitle size="md" className="mb-4 text-plutor-green">
                   Client Pays
@@ -175,15 +183,11 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-plutor-green" />
-                  <span className="text-white">
-                    Instant USDC funding
-                  </span>
+                  <span className="text-white">Instant USDC funding</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-plutor-green" />
-                  <span className="text-white">
-                    Competitive rates
-                  </span>
+                  <span className="text-white">Competitive rates</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-plutor-green" />
@@ -199,7 +203,9 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-300">Advance Rate</span>
-                  <span className="text-plutor-green-bright font-mono">85%</span>
+                  <span className="text-plutor-green-bright font-mono">
+                    85%
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-300">You Receive</span>
@@ -244,9 +250,15 @@ export default function Home() {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-10 h-10 flex items-center justify-center">
-                  <img src="/icons/plutor-svg-logo.svg" alt="Plutor" className="w-10 h-10" />
+                  <img
+                    src="/icons/plutor-svg-logo.svg"
+                    alt="Plutor"
+                    className="w-10 h-10"
+                  />
                 </div>
-                <span className="text-xl font-bold text-plutor-green">Plutor</span>
+                <span className="text-xl font-bold text-plutor-green">
+                  Plutor
+                </span>
               </div>
               <p className="text-gray-300 max-w-md">
                 Decentralized invoice finance platform powered by Solana and
@@ -305,7 +317,7 @@ export default function Home() {
 
           <div className="mt-8 pt-8 border-t border-plutor-green/20 text-center">
             <p className="text-gray-500">
-              © 2025 Plutor. All rights reserved. Built on TIPS Protocol 🚀
+              © 2025 Plutor. All rights reserved. Built on TIPS Protocol
             </p>
           </div>
         </div>

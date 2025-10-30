@@ -1,20 +1,37 @@
+import { Plus, FileText } from 'lucide-react'
+import Button from '@/components/ui/button'
+import Link from 'next/link'
+import PageContainer from '@/components/layout/page-container'
+import PageHeader from '@/components/layout/page-header'
+import EmptyState from '@/components/ui/empty-state'
+
 export default function InvoicesPage() {
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-white">Invoices</h1>
-        <a 
-          href="/invoices/new" 
-          className="bg-plutor-purple text-white px-4 py-2 rounded hover:bg-purple-600 transition-colors"
-        >
-          Create Invoice
-        </a>
-      </div>
-      <div className="bg-plutor-navy-light border border-plutor-navy-600 rounded-lg">
-        <div className="p-6">
-          <p className="text-plutor-navy-300 text-center">No invoices yet. Create your first invoice to get started.</p>
-        </div>
-      </div>
-    </div>
+    <PageContainer>
+      <PageHeader
+        title="Invoices"
+        description="Manage your invoices and track payments"
+        action={
+          <Link href="/invoices/new">
+            <Button variant="success" icon={<Plus className="w-4 h-4" />}>
+              Create Invoice
+            </Button>
+          </Link>
+        }
+      />
+
+      <EmptyState
+        title="No invoices yet"
+        description="Create your first invoice to get started with Plutor's invoice financing platform."
+        icon={<FileText className="w-8 h-8 text-plutor-green" />}
+        action={
+          <Link href="/invoices/new">
+            <Button variant="primary" icon={<Plus className="w-4 h-4" />}>
+              Create Your First Invoice
+            </Button>
+          </Link>
+        }
+      />
+    </PageContainer>
   )
 }

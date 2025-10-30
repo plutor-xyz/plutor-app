@@ -13,6 +13,7 @@ export function useWallet() {
     disconnecting,
     connect,
     disconnect,
+    select,
     sendTransaction,
     signTransaction,
     signAllTransactions
@@ -44,6 +45,19 @@ export function useWallet() {
     }
   }, [connection, publicKey, sendTransaction])
 
+  const connectSolflare = useCallback(async () => {
+    try {
+      // First select the Solflare wallet
+      const solflareWalletName = 'Solflare'
+      await select(solflareWalletName)
+      // Then connect to it
+      await connect()
+    } catch (error) {
+      console.error('Failed to connect to Solflare:', error)
+      throw error
+    }
+  }, [select, connect])
+
   return {
     wallet,
     publicKey,
@@ -51,7 +65,9 @@ export function useWallet() {
     connected,
     disconnecting,
     connect,
+    connectSolflare,
     disconnect,
+    select,
     sendTransaction,
     signTransaction,
     signAllTransactions,

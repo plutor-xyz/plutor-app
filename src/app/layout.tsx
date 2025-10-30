@@ -4,7 +4,7 @@ import './globals.css'
 import { cn } from '@/lib/utils/cn'
 import { WalletContextProvider } from '@/components/wallet/wallet-context'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
@@ -18,8 +18,16 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Plutor - Create Wealth From Invoices',
-  description: 'Transform invoices into instant liquidity using TIPS Protocol on Solana. The wealth creator for your business.',
-  keywords: ['invoice finance', 'DeFi', 'Solana', 'TIPS Protocol', 'liquidity', 'wealth creation'],
+  description:
+    'Transform invoices into instant liquidity using TIPS Protocol on Solana. The wealth creator for your business.',
+  keywords: [
+    'invoice finance',
+    'DeFi',
+    'Solana',
+    'TIPS Protocol',
+    'liquidity',
+    'wealth creation',
+  ],
   authors: [{ name: 'Plutor Team' }],
   creator: 'Plutor',
   openGraph: {
@@ -27,7 +35,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://plutor.xyz',
     title: 'Plutor - Create Wealth From Invoices',
-    description: 'Transform invoices into instant liquidity using TIPS Protocol on Solana',
+    description:
+      'Transform invoices into instant liquidity using TIPS Protocol on Solana',
     siteName: 'Plutor',
     images: [
       {
@@ -41,7 +50,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Plutor - Create Wealth From Invoices',
-    description: 'Transform invoices into instant liquidity using TIPS Protocol on Solana',
+    description:
+      'Transform invoices into instant liquidity using TIPS Protocol on Solana',
     images: ['/images/og-image.png'],
     creator: '@plutor',
   },
@@ -55,7 +65,10 @@ export const metadata: Metadata = {
     { media: '(prefers-color-scheme: dark)', color: '#0F172A' },
   ],
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/icons/plutor-svg-logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
@@ -69,7 +82,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body 
+      <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased',
           inter.variable,
@@ -82,7 +95,7 @@ export default function RootLayout({
             <div className="flex-1">{children}</div>
           </div>
         </WalletContextProvider>
-        
+
         {/* Cosmic background elements */}
         <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-plutor-purple/5 rounded-full blur-3xl animate-float" />
