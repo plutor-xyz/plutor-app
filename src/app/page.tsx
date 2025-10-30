@@ -30,14 +30,16 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-10 h-10 flex items-center justify-center">
+                <div className="w-14 h-14 flex items-center justify-center">
                   <img
                     src="/icons/plutor-svg-logo.svg"
                     alt="Plutor"
-                    className="w-10 h-10"
+                    className="w-14 h-14"
                   />
                 </div>
-                <span className="text-sm font-medium text-gray-400">Beta</span>
+                <span className="text-md mt-3 font-medium text-gray-400">
+                  Beta
+                </span>
               </Link>
             </div>
 
