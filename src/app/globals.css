@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --plutor-green: #A0E66E;
+  --plutor-green-bright: #39FF14;
+  --plutor-green-dark: #143200;
+  --plutor-green-hover: #B8ED85;
+  --plutor-green-muted: rgba(160, 230, 110, 0.7);
+  --plutor-green-border: rgba(160, 230, 110, 0.3);
+  --plutor-black: #000000;
+  --plutor-black-light: #0F0F0F;
+  --plutor-black-muted: rgba(15, 15, 15, 0.8);
+  --plutor-white: #FFFFFF;
+  --plutor-gray-light: rgb(209, 213, 219);
+  --plutor-text-primary: #A0E66E;
+  --plutor-text-secondary: #143200;
+  --plutor-text-muted: rgb(209, 213, 219);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-black text-white font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+  
+  h1 {
+    @apply text-hero font-bold;
+  }
+  
+  h2 {
+    @apply text-display-1 font-bold;
+  }
+  
+  h3 {
+    @apply text-display-2 font-bold;
+  }
+  
+  h4 {
+    @apply text-display-3 font-semibold;
+  }
+  
+  h5 {
+    @apply text-display-4 font-semibold;
+  }
+  
+  p {
+    @apply text-body leading-relaxed;
+  }
+  
+  a {
+    @apply transition-colors duration-150;
+  }
+  
+  ::selection {
+    @apply bg-plutor-green/20 text-plutor-green;
+  }
+  
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-plutor-green/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-plutor-green/70;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold 
+           transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-plutor-green text-plutor-green-dark hover:bg-plutor-green/80 
+           focus:ring-plutor-green/50 shadow-lg hover:shadow-xl 
+           hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply btn border-2 border-plutor-green text-plutor-green 
+           hover:bg-plutor-green hover:text-plutor-green-dark focus:ring-plutor-green/50;
+  }
+  
+  .btn-success {
+    @apply btn bg-plutor-green text-plutor-green-dark hover:bg-plutor-green/80 
+           focus:ring-plutor-green/50 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-ghost {
+    @apply btn text-plutor-green hover:bg-plutor-green/10 hover:text-white 
+           focus:ring-plutor-green/30;
+  }
+  
+  .card {
+    @apply bg-background-card rounded-xl p-6 shadow-lg 
+           border border-plutor-green/20 hover:border-plutor-green/50 
+           transition-all duration-200 hover:-translate-y-1 hover:shadow-xl;
+  }
+  
+  .card-light {
+    @apply bg-background-card rounded-xl p-6 shadow-lg border border-plutor-green/30 
+           hover:border-plutor-green/50 transition-all duration-200 
+           hover:-translate-y-1 hover:shadow-xl;
+  }
+  
+  .cosmic-bg {
+    @apply bg-cosmic relative overflow-hidden;
+  }
+  
+  .cosmic-bg::before {
+    content: '';
+    @apply absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-10;
+  }
+  
+  .wealth-gradient {
+    @apply bg-wealth text-transparent bg-clip-text;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-plutor-green to-plutor-green-bright text-transparent bg-clip-text;
+  }
+  
+  .glow-green {
+    @apply shadow-lg shadow-plutor-green/20;
+  }
+  
+  .glow-green-bright {
+    @apply shadow-lg shadow-plutor-green-bright/20;
+  }
+  
+  .input {
+    @apply w-full rounded-xl border border-plutor-green/30 bg-background-card 
+           px-4 py-3 text-white placeholder:text-gray-400 
+           focus:border-plutor-green focus:outline-none focus:ring-2 
+           focus:ring-plutor-green/20 transition-colors;
+  }
+  
+  .sidebar-nav-item {
+    @apply flex items-center px-4 py-3 text-sm font-medium rounded-xl 
+           transition-all duration-150;
+  }
+  
+  .sidebar-nav-item.active {
+    @apply bg-plutor-green text-plutor-green-dark shadow-lg;
+  }
+  
+  .sidebar-nav-item:not(.active) {
+    @apply text-gray-300 hover:bg-plutor-green/10 hover:text-plutor-green;
+  }
+  
+  .table {
+    @apply w-full border-collapse rounded-xl overflow-hidden 
+           bg-background-card shadow-lg;
+  }
+  
+  .table th {
+    @apply bg-plutor-green/10 px-6 py-4 text-left text-xs font-semibold 
+           text-plutor-green uppercase tracking-wider;
+  }
+  
+  .table td {
+    @apply px-6 py-4 text-sm text-white border-t 
+           border-plutor-green/20;
+  }
+  
+  .table tr:hover {
+    @apply bg-plutor-green/5;
+  }
+}
+
+@layer utilities {
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-450 {
+    animation-delay: 450ms;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(107, 70, 193, 0.1),
+    transparent
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-plutor-green/20 rounded;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  @apply outline-2 outline-offset-2 outline-plutor-green;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  
+  .no-print {
+    @apply hidden;
+  }
+}
