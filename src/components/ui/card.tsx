@@ -20,7 +20,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({
     default: 'card',
     light: 'card-light',
     cosmic: 'card cosmic-bg',
-    wealth: 'card bg-wealth/10 border-plutor-gold/30 hover:border-plutor-gold/50',
+    wealth: 'card bg-wealth/10 border-plutor-green/30 hover:border-plutor-green/50',
   }
   
   return (
@@ -29,7 +29,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({
       className={cn(
         variantClasses[variant],
         !padding && 'p-0',
-        glow && (variant === 'wealth' ? 'glow-gold' : 'glow-purple'),
+        glow && (variant === 'wealth' ? 'glow-green-bright' : 'glow-green'),
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(({
     <div
       ref={ref}
       className={cn(
-        'mb-6 pb-4 border-b border-plutor-navy-600/30',
+        'mb-6 pb-4 border-b border-plutor-green/30',
         gradient && 'text-gradient',
         className
       )}
@@ -118,7 +118,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(({
   return (
     <div
       ref={ref}
-      className={cn('text-plutor-navy-200', className)}
+      className={cn('text-white', className)}
       {...props}
     >
       {children}
@@ -140,7 +140,7 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(({
   return (
     <div
       ref={ref}
-      className={cn('mt-6 pt-4 border-t border-plutor-navy-600/30 flex items-center justify-between', className)}
+      className={cn('mt-6 pt-4 border-t border-plutor-green/30 flex items-center justify-between', className)}
       {...props}
     >
       {children}
