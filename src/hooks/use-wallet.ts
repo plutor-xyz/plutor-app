@@ -1,6 +1,7 @@
 import { useWallet as useWalletAdapter } from '@solana/wallet-adapter-react'
 import { useConnection } from '@solana/wallet-adapter-react'
-import { PublicKey, Transaction } from '@solana/web3.js'
+import { WalletName } from '@solana/wallet-adapter-base'
+import { Transaction } from '@solana/web3.js'
 import { useCallback } from 'react'
 
 export function useWallet() {
@@ -14,9 +15,10 @@ export function useWallet() {
     connect,
     disconnect,
     select,
+    wallets,
     sendTransaction,
     signTransaction,
-    signAllTransactions
+    signAllTransactions,
   } = useWalletAdapter()
 
   const getBalance = useCallback(async () => {
@@ -30,33 +32,70 @@ export function useWallet() {
     }
   }, [connection, publicKey])
 
-  const sendAndConfirmTransaction = useCallback(async (transaction: Transaction) => {
-    if (!publicKey || !sendTransaction) {
-      throw new Error('Wallet not connected')
-    }
+  const sendAndConfirmTransaction = useCallback(
+    async (transaction: Transaction) => {
+      if (!publicKey || !sendTransaction) {
+        throw new Error('Wallet not connected')
+      }
 
-    try {
-      const signature = await sendTransaction(transaction, connection)
-      await connection.confirmTransaction(signature, 'confirmed')
-      return signature
-    } catch (error) {
-      console.error('Transaction failed:', error)
-      throw error
-    }
-  }, [connection, publicKey, sendTransaction])
+      try {
+        const { blockhash, lastValidBlockHeight } =
+          await connection.getLatestBlockhash('confirmed')
+        transaction.recentBlockhash = blockhash
+        transaction.lastValidBlockHeight = lastValidBlockHeight
+
+        const signature = await sendTransaction(transaction, connection)
+
+        const confirmation = await connection.confirmTransaction(
+          {
+            signature,
+            blockhash,
+            lastValidBlockHeight,
+          },
+          'confirmed'
+        )
+
+        if (confirmation.value.err) {
+          throw new Error('Transaction failed to confirm')
+        }
+
+        return signature
+      } catch (error) {
+        console.error('Transaction failed:', error)
+        throw error
+      }
+    },
+    [connection, publicKey, sendTransaction]
+  )
 
   const connectSolflare = useCallback(async () => {
     try {
-      // First select the Solflare wallet
-      const solflareWalletName = 'Solflare'
-      await select(solflareWalletName)
-      // Then connect to it
-      await connect()
+      if (connected && wallet?.adapter?.name === 'Solflare') {
+        return
+      }
+
+      const solflareWallet = wallets.find((w) => w.adapter.name === 'Solflare')
+
+      if (!solflareWallet) {
+        throw new Error('Solflare wallet not found. Please install Solflare.')
+      }
+
+      if (wallet && wallet.adapter.name !== 'Solflare') {
+        await disconnect()
+      }
+
+      select(solflareWallet.adapter.name as WalletName<'Solflare'>)
+
+      if (solflareWallet.adapter.connected) {
+        await solflareWallet.adapter.disconnect()
+      }
+
+      await solflareWallet.adapter.connect()
     } catch (error) {
       console.error('Failed to connect to Solflare:', error)
       throw error
     }
-  }, [select, connect])
+  }, [select, wallets, wallet, connected, disconnect])
 
   return {
     wallet,
@@ -73,6 +112,6 @@ export function useWallet() {
     signAllTransactions,
     getBalance,
     sendAndConfirmTransaction,
-    connection
+    connection,
   }
 }
