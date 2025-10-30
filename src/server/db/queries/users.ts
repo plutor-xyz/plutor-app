@@ -1,7 +1,7 @@
 import { eq, and, sql } from 'drizzle-orm';
 import { db } from '../index';
-import { users, profiles, didMetadata, emailVerifications } from '../schema';
-import type { NewUser, NewProfile, NewDidMetadata, NewEmailVerification } from '../schema';
+import { users, profiles, didMetadata, emailVerifications } from '@/server';
+import type { NewUser, NewProfile, NewDidMetadata, NewEmailVerification } from '@/server';
 import {
   generateDID,
   generateDIDDocument,
@@ -9,7 +9,7 @@ import {
   generateSecureToken,
   calculateTrustScore,
   getVerificationStatus,
-} from '../../lib/did';
+} from '@/server';
 
 /**
  * Check if user exists by wallet address
