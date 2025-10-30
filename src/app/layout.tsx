@@ -69,10 +69,7 @@ export const metadata: Metadata = {
       { url: '/icons/plutor-svg-logo.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico' },
     ],
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
   },
-  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({
